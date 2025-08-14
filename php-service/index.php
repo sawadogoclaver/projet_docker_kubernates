@@ -3,6 +3,7 @@ $host = getenv('DB_HOST') ?: 'postgres';
 $db   = getenv('DB_NAME') ?: 'microdb';
 $user = getenv('DB_USER') ?: 'user';
 $pass = getenv('DB_PASSWORD') ?: 'password';
+$pass = getenv('DB_PORT') ?: '5432';
 
 try {
     $dsn = "pgsql:host=$host;port=$port;dbname=$db;";
