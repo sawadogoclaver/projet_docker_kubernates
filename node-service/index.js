@@ -36,7 +36,11 @@ app.post('/submit', async (req, res) => {
       'INSERT INTO entries (name, value) VALUES ($1, $2)',
       [name, parseFloat(value)]
     );
-    res.send('Valeur enregistrée avec succès !');
+    //res.send('Valeur enregistrée avec succès !');
+    res.send(`
+      <p style="color: green;">✅ Valeur enregistrée avec succès !</p>
+      <a href="/">↩ Revenir au formulaire</a>
+    `);
   } catch (err) {
     console.error(err);
     res.status(500).send('Erreur lors de l\'enregistrement');
