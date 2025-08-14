@@ -16,7 +16,7 @@ La base de données devra etre persistée en local pour garder les données sais
 ## Configuration
 - Le fichier init.sql dans le dossier db du projet permet d'initialiser la base de données.
 - Le fichier index.js contient le formulaire la saisie des données et affiche les données agrégées.
-- Le fichier resultat.php traite les données et les stocke dans PostgreSQL.
+- Le fichier index.php traite les données et les stocke dans PostgreSQL.
 - Le fichier package.json contient les dépendances Node.js.
 
 ### Prérequis
@@ -59,7 +59,7 @@ microservices-project/
 │
 ├── php-service/
 │   ├── Dockerfile
-│   ├── resultat.php
+│   ├── index.php
 │
 ├── k8s/
 │   ├── node-deployment.yaml
