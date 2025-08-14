@@ -23,7 +23,7 @@ La base de données devra etre persistée en local avec un volume pour garder le
 
 - Docker
 - Docker-Compose
-- kubenates
+- kubernates
 
 ### Installation
 
