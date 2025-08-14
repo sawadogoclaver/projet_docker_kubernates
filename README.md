@@ -38,8 +38,8 @@ cd projet_docker_kubernates
 
 Cela va démarrer les services et vous pourrez accéder à l'application via (veillez respecter les numeros de port):
 
-- Node.js (Saisie) : http://localhost:8090
-- PHP (Résultats) : http://localhost:3005
+- PHP (Résultats): http://localhost:8090
+- Node.js (Saisie) : http://localhost:3005
 
 ```
 3. Ensuite ajouter la configuration kubernates pour gerer le lancement automatique des conteneurs.
