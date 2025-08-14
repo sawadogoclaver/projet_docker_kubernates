@@ -1,7 +1,5 @@
 CREATE TABLE IF NOT EXISTS entries (
     id SERIAL PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
-    email VARCHAR(100) NOT NULL,
-    message TEXT,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    value NUMERIC NOT NULL
 );
