@@ -47,7 +47,7 @@ Cela va démarrer les services et vous pourrez accéder à l'application via (v
 Lancez l'application à partir de kubernates!
 
 # Structure_finale_du_projet
-microservices-project/
+projet_docker_kubernates/
 │
 ├──db/
 |   ├── init.sql
