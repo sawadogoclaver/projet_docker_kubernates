@@ -49,7 +49,10 @@ Lancez l'application à partir de kubernates!
 # Structure_finale_du_projet
 microservices-project/
 │
-├── node-service/
+├──db/
+|   ├── init.sql
+|
+├──node-service/
 │   ├── Dockerfile
 │   ├── package.json
 │   ├── index.js
