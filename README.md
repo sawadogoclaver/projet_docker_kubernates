@@ -11,7 +11,7 @@ Elle est composée des services suivants:
 - PostgreSQL : Base de données pour stocker les données.
 La base de données devra etre persistée en local pour garder les données saisies.
 
--Créez un réseau nommé « reseau_msr » avec le masque 172.16.100.0/24 et passerelle 172.16.100.1 que vous allez utiliser pour deployer vos conteneurs.
+-Créez un réseau nommé « reseau_msr » avec le masque 172.20.100.0/24 et passerelle 172.20.100.1 que vous allez utiliser pour deployer vos conteneurs. Attribuez l'ip 172.20.100.10 au service php, l'ip 172.20.100.11 au service node et le 172.20.100.12 au service postgres.
 
 ## Configuration
 - Le fichier init.sql dans le dossier db du projet permet d'initialiser la base de données.
