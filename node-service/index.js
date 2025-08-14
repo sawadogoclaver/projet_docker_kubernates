@@ -1,8 +1,9 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 const { Pool } = require('pg');
+
 const app = express();
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+const port = 3000;
 
 const pool = new Pool({
   host: process.env.DB_HOST || 'postgres',
@@ -11,36 +12,37 @@ const pool = new Pool({
   database: process.env.DB_NAME || 'microdb'
 });
 
+app.use(bodyParser.urlencoded({ extended: true }));
+
 // Formulaire HTML
 app.get('/', (req, res) => {
   res.send(`
-    <h1>Ajouter une donnée</h1>
-    <form action="/add" method="post">
-      Nom : <input type="text" name="name" required><br>
-      Valeur : <input type="number" name="value" required><br>
+    <h1>Enregistrer une valeur</h1>
+    <form action="/submit" method="POST">
+      <label>Nom :</label><br>
+      <input type="text" name="name" required><br>
+      <label>Valeur :</label><br>
+      <input type="number" name="value" required><br><br>
       <button type="submit">Envoyer</button>
     </form>
-    <a href="/all">Voir toutes les données</a>
   `);
 });
 
-// Insertion en DB
-app.post('/add', async (req, res) => {
+// Enregistrement des données
+app.post('/submit', async (req, res) => {
   const { name, value } = req.body;
-  await pool.query('INSERT INTO records(name, value) VALUES($1, $2)', [name, value]);
-  res.redirect('/');
+  try {
+    await pool.query(
+      'INSERT INTO entries (name, value) VALUES ($1, $2)',
+      [name, parseFloat(value)]
+    );
+    res.send('Valeur enregistrée avec succès !');
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Erreur lors de l\'enregistrement');
+  }
 });
 
-// Liste des données
-app.get('/all', async (req, res) => {
-  const result = await pool.query('SELECT * FROM records');
-  let html = "<h1>Toutes les données</h1><ul>";
-  result.rows.forEach(row => {
-    html += `<li>${row.name} : ${row.value}</li>`;
-  });
-  html += "</ul><a href='/'>Retour</a>";
-  res.send(html);
+app.listen(port, () => {
+  console.log(`Node.js service running on port ${port}`);
 });
-
-app.listen(3000, () => console.log('Node service running on port 3000'));
-
